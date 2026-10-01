@@ -1,0 +1,21 @@
+name: pacer
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: pacer
+      POSTGRES_PASSWORD: pacer
+      POSTGRES_DB: pacer
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U pacer -d pacer']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    # Sem "ports" de propósito: um clone limpo não pode brigar pela 5432 da máquina.
+    # Para acessar do host em dev, use o compose.override.yaml (veja o exemplo).
+
+volumes:
+  pgdata:

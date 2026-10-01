@@ -1,0 +1,42 @@
+# dependencies
+node_modules/
+
+# build / cache
+dist/
+.turbo/
+coverage/
+*.tsbuildinfo
+
+# env (only examples are committed)
+.env
+.env.*
+!.env.example
+
+# local docker overrides
+compose.override.yaml
+
+# local study notes (never committed)
+study/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Terraform (infra/)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc

@@ -1,0 +1,21 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      glob: '*.{js,jsx,ts,tsx,json,jsonc,css}'
+      run: bunx biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
+    typecheck:
+      run: bun run typecheck
+    terraform-fmt:
+      glob: 'infra/**/*.{tf,tfvars}'
+      run: terraform fmt -check -recursive infra
+    tflint:
+      glob: 'infra/**/*.tf'
+      root: 'infra/'
+      run: tflint --recursive
+
+commit-msg:
+  commands:
+    conventional:
+      run: bun scripts/commit-msg.ts {1}

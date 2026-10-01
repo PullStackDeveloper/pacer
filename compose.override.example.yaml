@@ -1,0 +1,7 @@
+# Copie para compose.override.yaml (ignorado pelo git). O Docker Compose carrega
+# esse arquivo automaticamente junto com o compose.yaml.
+# 5433 no host: a 5432 costuma estar ocupada por outros projetos.
+services:
+  postgres:
+    ports:
+      - '5433:5432'
